@@ -252,7 +252,7 @@ int controller_ListPerrito(LinkedList* pArrayListPerrito)
 		{
 			if(j==0)
 			{
-				printf("%-5s %-12s %-12s %-10s %-12s\n", "ID", "NOMBRE", "PESO", "EDAD", "RAZA");
+				printf("%-5s %-12s %-12s %-10s %-15s\n", "ID", "NOMBRE", "PESO", "EDAD", "RAZA");
 			}
 			perrito_mostrarPerrito((pPerritos + j));
 		}
@@ -456,7 +456,7 @@ int controller_listarPerritosConRacion(LinkedList* pArrayListPerrito)
 		{
 			if(j==0)
 			{
-				printf("%-5s %-12s %-12s %-10s %-12s %-10s\n", "ID", "NOMBRE", "PESO", "EDAD", "RAZA", "RACION");
+				printf("%-5s %-12s %-12s %-10s %-20s %-30s\n", "ID", "NOMBRE", "PESO", "EDAD", "RAZA", "RACION");
 			}
 			perrito_mostrarPerritoConRacion((pPerritos + j));
 		}

@@ -306,7 +306,7 @@ int perrito_mostrarPerrito(perrito* this)
 
 	if(this != NULL)
 	{
-		printf("%-5d %-12s %-12f %-10d %-12s\n", this->id, this->nombre, this->peso, this->edad, this->raza);
+		printf("%-5d %-12s %-12f %-10d %-15s\n", this->id, this->nombre, this->peso, this->edad, this->raza);
 		retorno = 1;
 	}
 	return retorno;
@@ -517,7 +517,7 @@ int perrito_mostrarPerritoConRacion(perrito* this)
 
 	if(this != NULL)
 	{
-		printf("%-5d %-12s %-12f %-10d %-12s %-10f\n", this->id, this->nombre, this->peso, this->edad, this->raza, this->cantidadComidaRacion);
+		printf("%-5d %-12s %-12f %-10d %-20s %-30f\n", this->id, this->nombre, this->peso, this->edad, this->raza, this->cantidadComidaRacion);
 		retorno = 1;
 	}
 	return retorno;
