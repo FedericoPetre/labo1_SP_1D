@@ -615,3 +615,24 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     return returnAux;
 }
 
+
+int ll_map(LinkedList* this, int (*pFunc)(void*))
+{
+	int retorno = -1;
+	int tam = ll_len(this);
+	int i;
+
+	if(this != NULL)
+	{
+		for(i=0; i<tam;i++)
+		{
+			perrito* punteroPerrito = ll_get(this, i);
+			pFunc(punteroPerrito);
+			punteroPerrito = NULL;
+		}
+
+		retorno = 0;
+	}
+	return retorno;
+}
+

@@ -20,6 +20,7 @@ typedef struct{
 	float peso;
 	int edad;
 	char raza[21];
+	float cantidadComidaRacion;
 } perrito;
 
 perrito* nuevo_perrito();
@@ -47,6 +48,10 @@ int perrito_comparateByID(void* this1, void* this2);
 int perrito_comparateByNombre(void* this1, void* this2);
 int perrito_comparateByEdad(void* this1, void* this2);
 int perrito_comparateByRaza(void* this1, void* this2);
+
+
+int perrito_laQueMapea(void* this);
+int perrito_mostrarPerritoConRacion(perrito* this);
 
 
 

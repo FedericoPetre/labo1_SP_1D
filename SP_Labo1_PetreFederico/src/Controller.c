@@ -438,3 +438,31 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPerrito)
     return retorno;
 }
 
+int controller_listarPerritosConRacion(LinkedList* pArrayListPerrito)
+{
+	int retorno = -1;
+
+	int tamArrayPerritos;
+	tamArrayPerritos = ll_len(pArrayListPerrito);
+
+	perrito* pPerritos = NULL;
+	pPerritos = (perrito*) malloc (sizeof(perrito)*tamArrayPerritos);
+
+	if(pArrayListPerrito != NULL && tamArrayPerritos > 0)
+	{
+		pPerritos = nexusPerrito_and_Ll_getPerritos(pArrayListPerrito);
+
+		for(int j=0; j<tamArrayPerritos; j++)
+		{
+			if(j==0)
+			{
+				printf("%-5s %-12s %-12s %-10s %-12s %-10s\n", "ID", "NOMBRE", "PESO", "EDAD", "RAZA", "RACION");
+			}
+			perrito_mostrarPerritoConRacion((pPerritos + j));
+		}
+		retorno = 0;
+	}
+
+    return retorno;
+}
+

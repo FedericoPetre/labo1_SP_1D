@@ -18,4 +18,6 @@ int controller_sortPerritos(LinkedList* pArrayListPerrito);
 int controller_saveAsText(char* path , LinkedList* pArrayListPerrito);
 int controller_saveAsBinary(char* path , LinkedList* pArrayListPerrito);
 
+int controller_listarPerritosConRacion(LinkedList* pArrayListPerrito);
+
 #endif

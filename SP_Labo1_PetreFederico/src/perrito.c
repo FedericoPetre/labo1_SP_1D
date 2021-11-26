@@ -478,5 +478,35 @@ int perrito_comparateByRaza(void* this1, void* this2)
 	return retorno;
 }
 
+int perrito_laQueMapea(void* this)
+{
+	int retorno = 0;
+
+	perrito* pPerritoAux;
+
+	if(this != NULL)
+	{
+		pPerritoAux = (perrito*) this;
+
+		(pPerritoAux -> cantidadComidaRacion)= 23*(pPerritoAux -> peso);
+		retorno = 1;
+
+	}
+	return retorno;
+}
+
+int perrito_mostrarPerritoConRacion(perrito* this)
+{
+	int retorno= 0;
+
+	if(this != NULL)
+	{
+		printf("%-5d %-12s %-12f %-10d %-12s %-10f\n", this->id, this->nombre, this->peso, this->edad, this->raza, this->cantidadComidaRacion);
+		retorno = 1;
+	}
+	return retorno;
+}
+
+
 
 

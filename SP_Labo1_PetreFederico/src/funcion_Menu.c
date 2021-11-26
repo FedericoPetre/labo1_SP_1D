@@ -14,7 +14,9 @@ void funcionMenu(void)
 
     LinkedList* listaPerritos = ll_newLinkedList();
     int flagCargoDatos = 0;
-    int (*funcionQueCompara)(void* this1, void* this2);
+    int (*punteroAFuncion)(void* this1, void* this2);
+    int (*pFunc)(void* this);
+    int flagCalculoRaciones = 0;
 
 
     do{
@@ -37,16 +39,36 @@ void funcionMenu(void)
 				else
 				{
 					printf("Elejiste la opcion 2-Elejiste la opcion listar los perritos por nombre ascendente\nListando perritos...\n(Este proceso puede demorar algunos segundos...)\n");
-					funcionQueCompara = perrito_comparateByNombre;
-					ll_sort(listaPerritos, funcionQueCompara, 0);
+					punteroAFuncion = perrito_comparateByNombre;
+					ll_sort(listaPerritos, punteroAFuncion, 0);
 					controller_ListPerrito(listaPerritos);
 				}
 
 				break;
 			case 3:
-
+				if(flagCargoDatos == 0)
+				{
+					printf("Error al elegir calcular racion comida de los perritos...Los datos de los perritos no fueron cargados\n");
+				}
+				else
+				{
+					printf("Elejiste la opcion 3-Calcular la racion comida para cada perrito\nCalculando raciones (puede demorar algunos segundos)...\n");
+					pFunc = perrito_laQueMapea;
+					ll_map(listaPerritos, pFunc);
+					printf("Se han calculado las raciones de comida para cada perrito\n");
+					flagCalculoRaciones = 1;
+				}
 				break;
 			case 4:
+				if(flagCalculoRaciones == 0)
+				{
+					printf("Error al mostrar listado de perritos con raciones de comida, las raciones no fueron calculadas\n");
+				}
+				else
+				{
+					printf("Mostrando perritos con raciones de comida...\n");
+					controller_listarPerritosConRacion(listaPerritos);
+				}
 
 				break;
 			case 5:
