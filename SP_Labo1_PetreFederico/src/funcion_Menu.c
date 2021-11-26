@@ -17,6 +17,8 @@ void funcionMenu(void)
     int (*punteroAFuncion)(void* this1, void* this2);
     int (*pFunc)(void* this);
     int flagCalculoRaciones = 0;
+    LinkedList* listaFiltro;
+    int banderaPasoFiltro = 0;
 
 
     do{
@@ -72,13 +74,31 @@ void funcionMenu(void)
 
 				break;
 			case 5:
+				if(flagCalculoRaciones == 0)
+				{
+					printf("Error al generar el listado. No se calcularon las raciones de comida para cada perrito\n");
+				}
+				else
+				{
+					pFunc = perrito_laQueFiltra;
+					listaFiltro = ll_filter(listaPerritos, pFunc);
+					printf("Se ha generado el listado de galgo con mas de 10 años y menos de 200 gramos de comida\n");
+					banderaPasoFiltro = 1;
+				}
 
 				break;
 			case 6:
-
+				if(banderaPasoFiltro == 0)
+				{
+					printf("Error al guardar modo texto, no se genero el listado con perritos raza 'GALGO', con mas de 10 años y menos de 200 gramos de racion\n");
+				}
+				else
+				{
+					controller_saveAsText("galgosFlaquitos.csv", listaFiltro);
+				}
 				break;
 			case 7:
-
+				printf("Has elejido la opcion 7-Salir\nSaliendo del sistema....\nHas salido del sistema\n");
 				break;
 			default:
 				printf("Error en el sistema\n\n");

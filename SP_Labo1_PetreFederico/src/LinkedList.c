@@ -626,7 +626,7 @@ int ll_map(LinkedList* this, int (*pFunc)(void*))
 	{
 		for(i=0; i<tam;i++)
 		{
-			perrito* punteroPerrito = ll_get(this, i);
+			void* punteroPerrito = ll_get(this, i);
 			pFunc(punteroPerrito);
 			punteroPerrito = NULL;
 		}
@@ -634,5 +634,26 @@ int ll_map(LinkedList* this, int (*pFunc)(void*))
 		retorno = 0;
 	}
 	return retorno;
+}
+
+LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
+{
+	LinkedList* linkedListFiltro = ll_newLinkedList();
+	int tam = ll_len(this);
+	int i;
+
+	if(this != NULL)
+	{
+		for(i =0; i<tam; i++)
+		{
+			void* pPerrito = ll_get(this, i);
+
+			if(pFunc(pPerrito) == 1)
+			{
+				ll_add(linkedListFiltro, pPerrito);
+			}
+		}
+	}
+	return linkedListFiltro;
 }
 

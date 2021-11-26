@@ -382,14 +382,14 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPerrito)
 		{
 			if(i==0)
 			{
-				fprintf(pFile,"%s,%s,%s,%s\n", "id", "nombre", "edad", "raza");
+				fprintf(pFile,"%s,%s,%s,%s,%s,%s\n", "id", "nombre", "peso", "edad","raza","racion");
 			}
 
 			perrito* pPerrito = ll_get(pArrayListPerrito, i);
 
 			if(pPerrito != NULL)
 			{
-				fprintf(pFile,"%d,%s,%d,%s\n", pPerrito->id, pPerrito->nombre, pPerrito->edad, pPerrito->raza);
+				fprintf(pFile,"%d,%s,%f,%d,%s,%f\n", pPerrito->id, pPerrito->nombre, pPerrito->peso, pPerrito->edad, pPerrito->raza, pPerrito->cantidadComidaRacion);
 			}
 			pPerrito = NULL;
 

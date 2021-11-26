@@ -481,16 +481,32 @@ int perrito_comparateByRaza(void* this1, void* this2)
 int perrito_laQueMapea(void* this)
 {
 	int retorno = 0;
+	float racion;
 
 	perrito* pPerritoAux;
 
 	if(this != NULL)
 	{
 		pPerritoAux = (perrito*) this;
+		racion = 23*(pPerritoAux -> peso);
 
-		(pPerritoAux -> cantidadComidaRacion)= 23*(pPerritoAux -> peso);
+		(pPerritoAux -> cantidadComidaRacion)= racion;
+
+		perrito_setRacion(pPerritoAux, racion);
 		retorno = 1;
 
+	}
+	return retorno;
+}
+
+int perrito_setRacion(perrito* this, float racion)
+{
+	int retorno = -1;
+
+	if(this != NULL)
+	{
+		this -> cantidadComidaRacion = racion;
+		retorno = 0;
 	}
 	return retorno;
 }
@@ -503,6 +519,48 @@ int perrito_mostrarPerritoConRacion(perrito* this)
 	{
 		printf("%-5d %-12s %-12f %-10d %-12s %-10f\n", this->id, this->nombre, this->peso, this->edad, this->raza, this->cantidadComidaRacion);
 		retorno = 1;
+	}
+	return retorno;
+}
+
+
+int perrito_getRacion(perrito* this, float* racion)
+{
+	int retorno = -1;
+
+
+	if(this != NULL)
+	{
+		*racion = this -> cantidadComidaRacion;
+		retorno = 0;
+	}
+	return retorno;
+}
+
+/**
+ * retorna 1 si la raza del perrito contenido en this es galgo, tiene menos de 10 años y la racion es menor a 200 (gramos). Retorna -1 caso contrario
+ */
+int perrito_laQueFiltra(void* this)
+{
+	int retorno = -1;
+
+	perrito* perritoAux;
+	char* raza = (char*)malloc(sizeof(char)*21);
+	int edadAux;
+	float gramosComida;
+
+	if(this != NULL)
+	{
+		perritoAux = (perrito*) this;
+
+		perrito_getRaza(perritoAux, raza);
+		perrito_getEdad(perritoAux, &edadAux);
+		perrito_getRacion(this, &gramosComida);
+
+		if((strcmp(raza, "Galgo") == 0)&& edadAux > 10 && gramosComida<200)
+		{
+			retorno = 1;
+		}
 	}
 	return retorno;
 }

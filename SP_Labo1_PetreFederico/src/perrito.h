@@ -51,7 +51,11 @@ int perrito_comparateByRaza(void* this1, void* this2);
 
 
 int perrito_laQueMapea(void* this);
+int perrito_getRacion(perrito* this, float* racion);
+int perrito_setRacion(perrito* this, float racion);
+
 int perrito_mostrarPerritoConRacion(perrito* this);
+int perrito_laQueFiltra(void* this);
 
 
 
