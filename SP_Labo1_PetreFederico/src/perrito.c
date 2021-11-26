@@ -262,7 +262,7 @@ int perrito_getRaza(perrito* this,char* raza)
 
 	if(this != NULL)
 	{
-		raza = this -> raza;
+		strcpy(raza, this -> raza);
 		retorno = 1;
 	}
 	return retorno;
@@ -545,19 +545,21 @@ int perrito_laQueFiltra(void* this)
 	int retorno = -1;
 
 	perrito* perritoAux;
-	char* raza = (char*)malloc(sizeof(char)*21);
 	int edadAux;
-	float gramosComida;
+	float racionAux;
+
+
+	char razaAux[21];
 
 	if(this != NULL)
 	{
 		perritoAux = (perrito*) this;
 
-		perrito_getRaza(perritoAux, raza);
-		perrito_getEdad(perritoAux, &edadAux);
-		perrito_getRacion(this, &gramosComida);
+		perrito_getRaza(perritoAux,razaAux);
+		perrito_getEdad(perritoAux,&edadAux);
+		perrito_getRacion(perritoAux, &racionAux);
 
-		if((strcmp(raza, "Galgo") == 0)&& edadAux > 10 && gramosComida<200)
+		if((strcmp(razaAux, "Galgo") == 0)&& edadAux > 10 && racionAux < 200)
 		{
 			retorno = 1;
 		}

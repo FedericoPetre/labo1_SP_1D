@@ -22,7 +22,7 @@ void funcionMenu(void)
 
 
     do{
-    	funciones_imput_pedirYValidarEntero("Bienvenidx!\nIngrese una opción:\n1-Cargar los datos desde el archivo perrito\n2-Listar los perritos por nombre ascendente\n3-Calcular la cantidad de comida racion para cada perrito\n4-Listar perritos con sus raciones de comida\n5-Generar listado con perritos de raza Galgo, con mas de 10 anios y menos de 200 gramos de comida diaria\n6-Guardar listado de perritos galgo modo texto\n7-Salir","Error, opcion no valida, reingrese opcion:\nIngrese una opción:\n1-Cargar los datos desde el archivo perrito\n2-Listar los perritos por nombre ascendente\n3-Calcular la cantidad de comida racion para cada perrito\n4-Listar perritos con sus raciones de comida\n5-Generar listado con perritos de raza Galgo, con mas de 10 anios y menos de 200 gramos de comida diaria\n6-Guardar listado de perritos galgo modo texto\n7-Salir",1,7,&option);
+    	funciones_imput_pedirYValidarEntero("Bienvenidx!\nIngrese una opción:\n1-Cargar los datos desde el archivo perrito\n2-Listar los perritos por nombre ascendente\n3-Calcular la cantidad de comida racion para cada perrito\n4-Listar perritos con sus raciones de comida\n5-Generar listado con perritos de raza Galgo, con mas de 10 años y menos de 200 gramos de comida diaria\n6-Guardar listado de perritos galgo modo texto\n7-Salir","Error, opcion no valida, reingrese opcion:\nIngrese una opción:\n1-Cargar los datos desde el archivo perrito\n2-Listar los perritos por nombre ascendente\n3-Calcular la cantidad de comida racion para cada perrito\n4-Listar perritos con sus raciones de comida\n5-Generar listado con perritos de raza Galgo, con mas de 10 años y menos de 200 gramos de comida diaria\n6-Guardar listado de perritos galgo modo texto\n7-Salir",1,7,&option);
 
     	switch(option)
         {
@@ -40,7 +40,7 @@ void funcionMenu(void)
 				}
 				else
 				{
-					printf("Elejiste la opcion 2-Elejiste la opcion listar los perritos por nombre ascendente\nListando perritos...\n(Este proceso puede demorar algunos segundos...)\n");
+					printf("Elejiste la opcion 2-Listar los perritos por nombre ascendente\nListando perritos...\n(Este proceso puede demorar algunos segundos...)\n");
 					punteroAFuncion = perrito_comparateByNombre;
 					ll_sort(listaPerritos, punteroAFuncion, 0);
 					controller_ListPerrito(listaPerritos);
@@ -50,11 +50,11 @@ void funcionMenu(void)
 			case 3:
 				if(flagCargoDatos == 0)
 				{
-					printf("Error al elegir calcular racion comida de los perritos...Los datos de los perritos no fueron cargados\n");
+					printf("Error al elegir calcular la racion comida de los perritos...Los datos de los perritos no fueron cargados\n");
 				}
 				else
 				{
-					printf("Elejiste la opcion 3-Calcular la racion comida para cada perrito\nCalculando raciones (puede demorar algunos segundos)...\n");
+					printf("Elejiste la opcion 3-Calcular la racion de comida para cada perrito\nCalculando raciones...\n");
 					pFunc = perrito_laQueMapea;
 					ll_map(listaPerritos, pFunc);
 					printf("Se han calculado las raciones de comida para cada perrito\n");
@@ -76,13 +76,13 @@ void funcionMenu(void)
 			case 5:
 				if(flagCalculoRaciones == 0)
 				{
-					printf("Error al generar el listado. No se calcularon las raciones de comida para cada perrito\n");
+					printf("Error al generar el listado. Primero hay que calcular las raciones de comida para cada perrito\n");
 				}
 				else
 				{
 					pFunc = perrito_laQueFiltra;
 					listaFiltro = ll_filter(listaPerritos, pFunc);
-					printf("Se ha generado el listado de galgo con mas de 10 años y menos de 200 gramos de comida\n");
+					printf("Se ha generado el listado de los perritos galgo con mas de 10 años y menos de 200 gramos de comida\n");
 					banderaPasoFiltro = 1;
 				}
 
